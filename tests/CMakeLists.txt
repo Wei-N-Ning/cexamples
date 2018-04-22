@@ -5,3 +5,4 @@ add_test(NAME "testdata::loaderTest" COMMAND loadTestData)
 
 add_subdirectory(fileIO)
 add_subdirectory(memory)
+add_subdirectory(algorithms)
