@@ -43,11 +43,21 @@ int printNRandomNums(int sz, int seed) {
     return 1;
 }
 
-//440,19053,23075,13104,32363,
-//802,32478,7150,29924,30401,
-//440,19053,23075,13104,32363,
-//void main(void) {
-//    printNRandomNums(5, 123);
-//    printNRandomNums(5, 234);
-//    printNRandomNums(5, 123);
-//}
+#define sz 13
+#define sz_large 0x7FFF
+
+void RunTinyTests();
+
+void test_perf() {
+    int arr[sz];
+    int arr_large[sz_large];
+    int seed = 231245;
+    genNRandomNums(arr, sz, seed);
+    PRINT_ARR(arr, sz, "%d, ");
+    genNRandomNums(arr_large, sz_large, seed);
+}
+
+int main(int argc, char **argv) {
+    RunTinyTests();
+    return 0;
+}

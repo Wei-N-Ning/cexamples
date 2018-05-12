@@ -5,5 +5,5 @@
 add_tinytest_executable(sortingTests test_sorting.c)
 add_test(NAME "algorithm::sorting" COMMAND sortingTests)
 
-add_library(randTestIntel SHARED randomNumber/rand_intel.c)
-add_library(randTestOrigLCG SHARED randomNumber/rand_orig_LCG.c)
+add_tinytest_executable(randTestIntel randomNumber/rand_intel.c)
+add_tinytest_executable(randTestOrigLCG randomNumber/rand_orig_LCG.c)
