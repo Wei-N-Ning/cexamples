@@ -1,0 +1,3 @@
+
+add_executable(pthreadMinimalist minimalist.c)
+target_link_libraries(pthreadMinimalist pthread)

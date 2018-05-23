@@ -7,3 +7,5 @@ add_subdirectory(fileIO)
 add_subdirectory(memory)
 add_subdirectory(algorithms)
 add_subdirectory(arithmetics)
+
+add_subdirectory(parallel/pthread)
