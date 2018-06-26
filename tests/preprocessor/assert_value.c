@@ -1,8 +1,18 @@
 
-#define derr
-#if 1 == 1
+
+#if 1 < 2
+
+#define flag 0
+#define message "failed"
+
+#else
+
+#define flag 1
+#define message "passed"
+
 #endif
 
 int main() {
+    _Static_assert(0, "hrrrrr");
     return 0;
 }
