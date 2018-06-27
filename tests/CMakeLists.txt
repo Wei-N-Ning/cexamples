@@ -9,3 +9,5 @@ add_subdirectory(algorithms)
 add_subdirectory(arithmetics)
 
 add_subdirectory(parallel/pthread)
+add_subdirectory(parallel/posix_fork)
+
