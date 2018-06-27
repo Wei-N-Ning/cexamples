@@ -10,3 +10,5 @@ add_test(NAME "memory::structPacking" COMMAND structPacking)
 add_tinytest_executable(funcPtr funcPtr.c)
 add_test(NAME "memory::funcPtr" COMMAND funcPtr)
 
+add_executable(createSharedMemory createSharedMemory.c)
+add_test(NAME "memory::create_shared_memory" COMMAND createSharedMemory)
