@@ -13,6 +13,6 @@
 #endif
 
 int main() {
-    _Static_assert(0, "hrrrrr");
+    _Static_assert(flag, "hrrrrr");
     return 0;
 }
