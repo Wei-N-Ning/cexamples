@@ -24,6 +24,9 @@ static int64_t fileSize2(const char *filePath) {
     FILE *fp = fopen(filePath, "r");
     fseek(fp, 0, SEEK_END);
     long sz = ftell(fp);
+
+    // call rewind to set the fp to the beginning
+    rewind(fp);
     fclose(fp);
     return sz;
 }
