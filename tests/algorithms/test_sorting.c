@@ -18,13 +18,12 @@ int _cmpInts(const void *lhs, const void *rhs) {
     else if (lhs_v > rhs_v) {
         return 1;
     }
-    else {
-        return -1;
-    }
+    return -1;
 }
 
 int _prtInts(const int *arr, size_t sz) {
     for (size_t i = sz; i--; printf("%d ", arr[sz - 1 - i]) ) ;
+    return 0;
 }
 
 void test_qsortPrimtives() {
@@ -47,6 +46,7 @@ int _cmpIPointers(const void *lhs, const void *rhs) {
 
 int _prtPointers(int **sut, size_t sz) {
     for (size_t i = sz; i--; printf("%d ", *(sut[sz - 1 - i]))) ;
+    return 0;
 }
 
 void test_qsortPointers() {
