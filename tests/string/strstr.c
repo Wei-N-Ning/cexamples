@@ -7,37 +7,54 @@
 void RunTinyTests();
 
 const char* _strstr(const char* haystack, const char* needle) {
-    // iterate over the characters in haystack
-    for (; *haystack != '\0'; ++haystack) {
-        // iterate over the characters in needle;
-        // or start over again
+    while (*haystack) {
+        const char* needle_p = needle;
         const char* curr = haystack;
-        for (const char* needle_p = needle; *haystack != *needle_p; ++needle_p, ++haystack ) {
-            if (*needle_p == '\0') {
-                return curr;
+        while (*needle_p && *haystack) {
+            if (*needle_p == *haystack) {
+                ++needle_p, ++haystack;
+            } else {
+                ++haystack;
+                break;
             }
         }
+        if (*needle_p == '\0') {
+            return curr;
+        }
     }
-    return 0x0;
+    return NULL;
+}
+
+void _assert(const char* haystack, const char* needle, const char *expected) {
+    haystack = _strstr(haystack, needle);
+    if (expected == NULL) {
+        assert(haystack == NULL);
+    } else {
+        assert(0 == strcmp(expected, haystack));
+    }
 }
 
 void test_needle_in_the_middle() {
-    const char* needle = 0x0;
-    needle = _strstr("iddqdidkfa", "did");
-    assert(needle);
-    assert(0 == strcmp("didkfa", needle));
-
-    needle = _strstr("iddqdidkfa", "didkfa........");
-    assert(needle);
-    assert(0 == strcmp("didkfa", needle));
+    _assert("iddqdidkfa", "d", "ddqdidkfa");
+    _assert("iddqdidkfa", "dd", "ddqdidkfa");
+    _assert("iddqdidkfa", "did", "didkfa");
+    _assert("iddqdidkfa", "kf", "kfa");
 }
 
 void test_needle_at_the_beginning() {
-    const char* needle = 0x0;
+    _assert("iddqdidkfa", "id", "iddqdidkfa");
+    _assert("iddqdidkfa", "iddqdi", "iddqdidkfa");
+}
 
-    needle = _strstr("iddqdidkfa", "idd");
-    assert(needle);
-    assert(0 == strcmp("iddqdidkfa", needle));
+void test_needle_at_the_end() {
+    _assert("iddqdidkfa", "fa", "fa");
+    _assert("iddqdidkfa", "qdidkfa", "qdidkfa");
+}
+
+void test_unmatch() {
+    _assert("iddqdidkfa", "idnoclip", NULL);
+    _assert("iddqdidkfa", "idd...", NULL);
+    _assert("iddqdidkfa", "kfa..", NULL);
 }
 
 int main() {

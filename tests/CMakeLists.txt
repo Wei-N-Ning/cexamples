@@ -10,4 +10,4 @@ add_subdirectory(arithmetics)
 
 add_subdirectory(parallel/pthread)
 add_subdirectory(parallel/posix_fork)
-
+add_subdirectory(string)
