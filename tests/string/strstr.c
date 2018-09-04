@@ -4,9 +4,13 @@
 #include <string.h>
 #include <assert.h>
 
+// a test that implements libc's strstr() function
+// ref_strstr is the answer from the original post
+
+
 void RunTinyTests();
 
-const char* _strstr(const char* haystack, const char* needle) {
+const char* ref_strstr(const char* haystack, const char* needle) {
     while (*haystack) {
         const char* needle_p = needle;
         const char* curr = haystack;
@@ -22,6 +26,10 @@ const char* _strstr(const char* haystack, const char* needle) {
             return curr;
         }
     }
+    return NULL;
+}
+
+const char* _strstr(const char* haystack, const char* needle) {
     return NULL;
 }
 
