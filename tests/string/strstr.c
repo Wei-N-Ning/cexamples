@@ -29,9 +29,24 @@ const char* ref_strstr(const char* haystack, const char* needle) {
     return NULL;
 }
 
-const char* _strstr(const char* haystack, const char* needle) {
-    return NULL;
+// take 2 - seems cleaner
+const char* _strstr(const char* h, const char* n) {
+    typedef const char* P;
+    while (*h) {
+        for (P ndl = n, curr = h; *h; ) {
+            if (*h == *ndl) {
+                ++h; ++ndl;
+            } else {
+                ++h; break;
+            }
+            if (! *ndl) {
+                return curr;
+            }
+        }
+    }
+    return 0x0;
 }
+
 
 void _assert(const char* haystack, const char* needle, const char *expected) {
     haystack = _strstr(haystack, needle);
